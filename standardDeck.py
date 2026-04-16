@@ -7,13 +7,14 @@ class Deck:
     SUITS = ["Clubs", "Hearts", "Spades", "Diamonds"]
 
     def __init__(self, numDecks=1):
-        self.resetDeck(numDecks)
+        self.NUMDECKS = numDecks
+        self.resetDeck()
 
-    def resetDeck(self, numDecks):
+    def resetDeck(self):
         self.drawPile = []
         self.discardPile = []
         self.outPile = []
-        for _ in range(numDecks):
+        for _ in range(self.NUMDECKS):
             for suit in self.SUITS:
                 for rank in self.RANKS:
                     newCard = Card(rank, suit)
@@ -55,8 +56,20 @@ class Deck:
             self.drawPile = [] + left + rightSubFour + rightSubThree + rightSubTwo + rightSubOne
 
     def drawCard(self):
-        pass
+        if len(self.drawPile) == 0:
+            self.resetDeck()
+        toGive = self.drawPile.pop(0)
+        self.outPile.append(toGive)
+        return toGive
 
-    def discardCard(self):
-        pass
-        
+    def discardCard(self, toDiscard):
+        try:
+            self.outPile.remove(toDiscard)
+        except Exception:
+            pass
+        finally:
+            self.discardPile.append(toDiscard)
+
+        # if toDiscard in self.outPile:
+        #     self.discardPile.append(toDiscard)
+        #     self.outPile.remove(toDiscard)

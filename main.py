@@ -1,32 +1,29 @@
 # ~~~~~ Class Imports, Imports, Helper Functions ~~~~~
-from standardCard import Card
-from standardDeck import Deck
-from blackjackPlayers import BJPlayer, HumanBJPlayer
+from blackjackManager import BlackjackManager
 
 
 # ~~~~~ MAIN DEFINTION ~~~~~
 def main():
 
-    testCard1 = Card("Ace", "Clubs")
-    testCard2 = Card("Ace", "Hearts")
-    testCard3 = Card("Ace", "Spades")
-    testCard4 = Card("Ace", "Diamonds")
-    testCard5 = Card("Ten", "Diamonds")
-    testCard6 = Card("Eight", "Hearts")
-    testPlayer = BJPlayer()
-    testPlayer2 = HumanBJPlayer("Rob")
+    BJGame = BlackjackManager()
+    appOn = True
 
-    testPlayer.drawCard(testCard1)
-    testPlayer.drawCard(testCard2)
-    testPlayer.drawCard(testCard3)
-    testPlayer.drawCard(testCard4)
-    testPlayer.drawCard(testCard6)
+    while appOn:
+        print("")
+        print("~~~~ MENU ~~~~~")
+        print("1. Blackjack")
+        print("2. Quit")
+        print("")
+        print("Choose an option")
+        userChoice = input(" --> ").lower()
+        print("")
 
-    testPlayer2.drawCard(testCard5)
-    testPlayer2.drawCard(testCard3)
-
-    choice = testPlayer2.makeChoice()
-    print(f"You chose to {choice}!")
+        if userChoice in ["1", "1.", "blackjack"]:
+            BJGame.playGame()
+        elif userChoice in ["2", "2.", "quit"]:
+            appOn = False
+        else:
+            print("Invalid option - try again!")
 
 
 # ~~~~~ MAIN CALL ~~~~~

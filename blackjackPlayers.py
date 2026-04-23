@@ -11,16 +11,44 @@ class BJPlayer:
         self.score = 0
 
 
+    def __str__(self):
+        return self.name
+    
+
+    def __eq__(self, other):
+        if not isinstance(other, type(self)):
+            return False
+        if other.name != self.name:
+            return False
+        if len(other.hand) != len(other.hand):
+            return False
+        for idx in range(len(self.hand)):
+            if other.hand[idx] != self.hand[idx]:
+                return False
+        return True
+
+
     def showHand(self):
         print(f"~~~~~ {self.name}'s Hand ~~~~~")
         print("")
         if len(self.hand) > 0:
-            print("1. [??? of ???]")
-            for idx in range(1, len(self.hand)):
+            for idx in range(len(self.hand)):
                 print(f"{idx+1}. [{self.hand[idx]}]")
         else:
             print("No cards in hand")
         print("")
+
+
+    # def showHand(self):
+    #     print(f"~~~~~ {self.name}'s Hand ~~~~~")
+    #     print("")
+    #     if len(self.hand) > 0:
+    #         print("1. [??? of ???]")
+    #         for idx in range(1, len(self.hand)):
+    #             print(f"{idx+1}. [{self.hand[idx]}]")
+    #     else:
+    #         print("No cards in hand")
+    #     print("")
 
 
     def giveScore(self):
@@ -36,6 +64,7 @@ class BJPlayer:
     
 
     def calcScore(self):
+        self.score = 0
         aces = 0
         if len(self.hand) > 0:
             for card in self.hand:
@@ -51,6 +80,7 @@ class BJPlayer:
 
     def makeChoice(self):
         self.calcScore()
+        self.showHand()
         if self.score > 17:
             return "stay"
         else:
@@ -59,21 +89,11 @@ class BJPlayer:
 
 
 class HumanBJPlayer(BJPlayer):
-    
-    def showHand(self):
-        print(f"~~~~~ {self.name}'s Hand ~~~~~")
-        print("")
-        if len(self.hand) > 0:
-            for idx in range(len(self.hand)):
-                print(f"{idx+1}. [{self.hand[idx]}]")
-        else:
-            print("No cards in hand")
-        print("")
-
 
     def makeChoice(self):
         validChoice = False
         while not validChoice:
+            print("")
             self.showHand()
             print("Would you like to hit or stay?")
             playerChoice = input(" --> ").lower()

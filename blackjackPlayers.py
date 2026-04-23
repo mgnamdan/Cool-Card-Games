@@ -58,12 +58,7 @@ class BJPlayer:
 
 
 
-
 class HumanBJPlayer(BJPlayer):
-    
-    # def __init__(self, name):
-    #     super().__init__(name)
-
     
     def showHand(self):
         print(f"~~~~~ {self.name}'s Hand ~~~~~")

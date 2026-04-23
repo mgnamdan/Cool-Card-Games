@@ -1,6 +1,7 @@
 from standardCard import Card
 import random
 
+
 class Deck:
 
     RANKS = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
@@ -9,6 +10,7 @@ class Deck:
     def __init__(self, numDecks=1):
         self.NUMDECKS = numDecks
         self.resetDeck()
+
 
     def resetDeck(self):
         self.drawPile = []
@@ -20,12 +22,15 @@ class Deck:
                     newCard = Card(rank, suit)
                     self.drawPile.append(newCard)
 
+
     def __repr__(self):
         return f"Deck()"
     
+
     def __str__(self):
         return "\n".join(str(card) for card in self.drawPile)
         # return "A deck of standard cards"
+
 
     def shuffle(self):
         # random.shuffle(self.drawPile)
@@ -55,12 +60,14 @@ class Deck:
 
             self.drawPile = [] + left + rightSubFour + rightSubThree + rightSubTwo + rightSubOne
 
+
     def drawCard(self):
         if len(self.drawPile) == 0:
             self.resetDeck()
         toGive = self.drawPile.pop(0)
         self.outPile.append(toGive)
         return toGive
+
 
     def discardCard(self, toDiscard):
         try:

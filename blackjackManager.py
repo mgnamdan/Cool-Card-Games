@@ -2,6 +2,7 @@ from standardDeck import Deck
 from blackjackPlayers import *
 from random import randint
 
+
 class BlackjackManager:
 
     COMPNAMES = ["Angela", "Chelsea", "Daryl", "Elizabeth", "Fred", "Gabby",
@@ -13,6 +14,7 @@ class BlackjackManager:
         self.reset()
 
 
+    # ~~~~~ SETUP METHODS ~~~~~
     def reset(self, humanName="Danny", extraOpps=0):
         self.deck = Deck()
         self.dealer = BJPlayer()
@@ -33,6 +35,7 @@ class BlackjackManager:
                 player.drawCard(self.deck.drawCard())
 
 
+    # ~~~~~ GAME FUNCTIONALITY METHODS ~~~~~
     def calculateScore(self):
         pass
 
@@ -49,5 +52,7 @@ class BlackjackManager:
         pass
 
 
+    # ~~~~~ GAME LOGIC ~~~~~
     def playGame(self):
         pass
+    

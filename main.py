@@ -1,4 +1,4 @@
-# ~~~~~ Class Imports, Imports, Helper Functions ~~~~~
+# ~~~~~ CLASS IMPORTS, IMPORTS, HELPER FUNCTIONS ~~~~~
 from blackjackManager import BlackjackManager
 
 
